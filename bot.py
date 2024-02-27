@@ -1,7 +1,7 @@
 import logging
 import sqlite3
 from telegram import ReplyKeyboardMarkup, KeyboardButton
-from telegram.ext import Updater, CommandHandler, MessageHandler, ConversationHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
 
 GENDER, AGE, HOBBY, LOCATION, PHOTO, DESCRIPTION, MATCHING = range(7)
 
