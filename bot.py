@@ -101,7 +101,7 @@ def user_already_registered(user_id):
 if __name__ == '__main__':
     logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
     
-    updater = Updater(token='6645546119:AAGas85vKVymDkpmSy-Y2Nqp6MyI3g0QSCU', use_context=True)
+    updater = Updater(token='6645546119:AAGas85vKVymDkpmSy-Y2Nqp6MyI3g0QSCU')
     dispatcher = updater.dispatcher
 
     start_handler = CommandHandler('start', start)
