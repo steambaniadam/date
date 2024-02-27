@@ -1,7 +1,7 @@
 import logging
 import sqlite3
 from telegram import ReplyKeyboardMarkup, KeyboardButton
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler
+from telegram.ext import Updater, CommandHandler, MessageHandler, ConversationHandler, filters
 
 GENDER, AGE, HOBBY, LOCATION, PHOTO, DESCRIPTION, MATCHING = range(7)
 
@@ -110,16 +110,19 @@ if __name__ == '__main__':
     conversation_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start)],
         states={
-            GENDER: [MessageHandler(Filters.text & ~Filters.command, gender)],
-            AGE: [MessageHandler(Filters.text & ~Filters.command, age)],
-            HOBBY: [MessageHandler(Filters.text & ~Filters.command, hobby)],
-            LOCATION: [MessageHandler(Filters.location, location)],
-            PHOTO: [MessageHandler(Filters.photo, photo)],
-            DESCRIPTION: [MessageHandler(Filters.text & ~Filters.command, description)],
+            GENDER: [MessageHandler(filters.text & ~filters.command, gender)],
+            AGE: [MessageHandler(filters.text & ~filters.command, age)],
+            HOBBY: [MessageHandler(filters.text & ~filters.command, hobby)],
+            LOCATION: [MessageHandler(filters.location, location)],
+            PHOTO: [MessageHandler(filters.photo, photo)],
+            DESCRIPTION: [MessageHandler(filters.text & ~filters.command, description)],
             MATCHING: [
-                MessageHandler(Filters.text & ~Filters.command, start_matching),
-                MessageHandler(Filters.text & ~Filters.command, choose_matching)
+                MessageHandler(filters.text & ~filters.command, start_matching),
+                MessageHandler(filters.text & ~filters.command, choose_matching)
+
             ],
+
+
         },
         fallbacks=[CommandHandler('cancel', cancel)],
     )
